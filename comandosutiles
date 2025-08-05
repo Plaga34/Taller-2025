@@ -1,0 +1,10 @@
+# ACA tenemos comandos utiles para poder comprobar los playbooks:
+
+# Para verificar la sintaxis de los playbooks hacemos
+
+ansible-playbook -i inventories/host.ini playbooks/webserver.yaml --syntax-check
+
+# Para chekear la ejecucion del playbook en conjunto con el inventario
+
+ansible-playbook -i inventories/host.ini playbooks/webserver.yaml --check --ask-become-pass
+
