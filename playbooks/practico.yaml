@@ -1,0 +1,31 @@
+---
+- name: Play para el practico
+  hosts: ubuntu
+  become: true
+
+  tasks:
+
+  - name: Crear grupo enterprise
+    ansible.builtin.group:
+      name: enterprise
+      state: present
+
+  - name: crear usuarios en grupo enterprise
+    ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+      group: enterprise
+    loop:
+       - picard
+       - data
+       - crusher.md
+       - troy
+  
+  - name: crear directorio /var/enterprise
+    ansible.builtin.file:
+      path: /var/enterprise
+      state: directory
+      owner: picard
+      group: enterprise
+      mode: '2770'
+
